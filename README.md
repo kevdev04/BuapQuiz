@@ -17,4 +17,4 @@ This project have been created to helpme with my exam and is about:
 #### Data Base is bulding in Firebase
 
 
-you can try the [beta here](https://myquizz.vercel.app/ "beta here")
+you can try the beta [here](https://myquizz.vercel.app/ "here")
