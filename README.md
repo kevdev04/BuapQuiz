@@ -1,8 +1,8 @@
-# Myquizz
+# BuapQuiz
 
 ### About the project
 
-This project have been created to helpme with my exam and is about:
+This project have been created to help me with my college exam and is about:
 
 - An user interface with a interactive trivia game
 - When you are wrong the game tell you the right answer
