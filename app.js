@@ -6,10 +6,11 @@ const fetchQuestions = async () => {
 
 const init = async () => {
   const questions = await fetchQuestions();
-
   let currentQuestionIndex = 0;
+  let score = 0; // Agregamos una variable para el puntaje
 
   const answers = document.querySelectorAll('.answer');
+  const scoreElement = document.querySelector('.score'); // Elemento donde se muestra el puntaje
 
   const displayQuestion = () => {
     const currentQuestion = questions[currentQuestionIndex];
@@ -22,6 +23,10 @@ const init = async () => {
     }
   };
 
+  const updateScore = () => {
+    scoreElement.innerText = `Score: ${score}`; // Actualiza el puntaje en el HTML
+  };
+
   const shuffleQuestions = () => {
     currentQuestionIndex = Math.floor(Math.random() * questions.length);
     displayQuestion();
@@ -31,8 +36,12 @@ const init = async () => {
     answer.addEventListener('click', function() {
       if (this.innerText === questions[currentQuestionIndex].correctAnswer) {
         this.classList.add('rightAnswer');
+        score++; // Aumenta el puntaje si la respuesta es correcta
+        updateScore(); // Actualiza el puntaje en el HTML
       } else {
         this.classList.add('wrongAnswer');
+        score = 0; // Reinicia el puntaje si la respuesta es incorrecta
+        updateScore(); // Actualiza el puntaje en el HTML
         for (const answer of answers) {
           if (answer.innerText === questions[currentQuestionIndex].correctAnswer) {
             answer.classList.add('rightAnswer');
@@ -47,10 +56,9 @@ const init = async () => {
       }, 1000);
     });
   }
-  
 
   shuffleQuestions();
+  updateScore(); // Inicializa el puntaje en el HTML
 };
 
 init();
-
